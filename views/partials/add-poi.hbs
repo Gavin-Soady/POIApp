@@ -1,0 +1,56 @@
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+  <form class="uk-form-stacked uk-text-left" action="/addpoi" method="POST">
+    <div class="uk-grid uk-grid-stack">
+      <div class="uk-width-1-2@m">
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-stacked-text">Enter Name of Place</label>
+          <div class="uk-form-controls">
+            <input class="uk-input" id="form-stacked-text" type="string" name="name" placeholder="Name of place.." />
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-stacked-text">Enter Name of County</label>
+          <div class="uk-form-controls">
+            <input class="uk-input" id="form-stacked-text" type="string" name="county" placeholder="Name of county.." />
+          </div>
+        </div>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Longitude</label>
+        <div class="uk-form-controls">
+          <input class="uk-input" id="form-stacked-text" type="string" name="long" placeholder="Longitude.." />
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Latitude</label>
+        <div class="uk-form-controls">
+          <input class="uk-input" id="form-stacked-text" type="string" name="lat" placeholder="Latitude.." />
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Category</label>
+            <div class="uk-form-controls">
+              <select class="uk-select" id="form-horizontal-select" name="cat">
+                <option value="na">Please choose one from the list below..</option>
+                <option value="Landscape-feature">Landscape Feature</option>
+                <option value="National-monument">National monument</option>
+                <option value="Walk">Walk</option>
+                <option value="Bridge">Bridge</option>
+                <option value="Venue">Venue</option>
+                <option value="Ringfort">Ringfort</option>
+                <option value="Dolmen">Dolmen</option>
+                <option value="River">River</option>
+                <option value="Bog">Bog</option>
+                <option value="Island">Island</option>
+                <option value="Forest">Forest</option>
+              </select>
+            </div>
+          </div>
+      </div>
+      <div class=" uk-width-2-2@m">
+        <div class=" uk-position-large uk-position-center-right" style="margin-right: 4em">
+          <button  class="  submit uk-button uk-button-primary uk-button-large uk-width-1-1" style="background-color:rgb(0,155,119)">Add Place of Interest</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
