@@ -5,7 +5,6 @@ const Category = require('../models/category');
 const Categories = {
 
     addCategory: {
-
         handler: async function (request, h)
         {
             try

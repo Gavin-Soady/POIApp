@@ -31,6 +31,9 @@
             <div class="uk-form-controls">
               <select class="uk-select" id="form-horizontal-select" name="cat">
                 <option value="na">Please choose one from the list below..</option>
+                {{#each categories}}
+                  <option value="{{name}}">{{name}}</option>
+                {{/each}}
                 <option value="Landscape-feature">Landscape Feature</option>
                 <option value="National-monument">National monument</option>
                 <option value="Walk">Walk</option>
@@ -53,4 +56,5 @@
       </div>
     </div>
   </form>
+  {{> new-category}}
 </div>

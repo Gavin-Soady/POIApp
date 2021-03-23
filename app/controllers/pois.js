@@ -2,12 +2,14 @@
 const POI = require("../models/poi");
 const User = require("../models/user");
 const Joi = require("@hapi/joi");
+const Category = require('../models/category');
 //const uuid = require('uuid');
 
 const POIS = {
   home: {
-    handler: function(request, h) {
-      return h.view("home", { title: "Add a place of interest" });
+    handler: async function(request, h) {
+      const categories = await Category.find().lean().sort('name');
+      return h.view("home", { title: "Add a place of interest", categories: categories });
     }
   },
   report: {
@@ -60,7 +62,8 @@ const POIS = {
       try {
         const id = request.params._id;
         const poi = await POI.findById(id).lean();
-        return h.view("update-poi", { title: "Edit Poi", poi: poi });
+        const categories = await Category.find().lean().sort('name');
+        return h.view("update-poi", { title: "Edit Poi", poi: poi, categories: categories});
       } catch (err) {
         return h.view("login", { errors: [{ message: err.message }] });
       }
