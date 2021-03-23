@@ -3,6 +3,7 @@
 const Accounts = require("./app/controllers/accounts");
 const POI = require("./app/controllers/pois");
 const Gallery = require('./app/controllers/gallery');
+const Categories =require("./app/controllers/categories")
 
 module.exports = [
   { method: "GET", path: "/", config: Accounts.index },
@@ -27,7 +28,7 @@ module.exports = [
   {method: 'GET', path: '/update-poi/{_id}', config: POI.showUpdatePOI},
   {method: 'POST', path: "/update-poi/{_id}", config: POI.updatePOI},
 
-
+  {method: 'POST', path: '/new-category', config: Categories.addCategory},
 
   {
     method: "GET",

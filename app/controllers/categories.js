@@ -1,8 +1,8 @@
 'use strict';
 
-const Categorymodel = require('../models/category');
+const Category = require('../models/category');
 
-const Category = {
+const Categories = {
 
     addCategory: {
 
@@ -11,7 +11,7 @@ const Category = {
             try
             {
                 const data = request.payload;
-                const newCategory = new Categorymodel({
+                const newCategory = new Category({
                     name: data.name,
                 });
                 await newCategory.save();
@@ -25,4 +25,4 @@ const Category = {
 
 }
 
-module.exports = Category;
+module.exports = Categories;
