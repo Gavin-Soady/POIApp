@@ -1,6 +1,8 @@
 "use strict";
 const POI = require("../models/poi");
 const User = require("../models/user");
+const Joi = require("@hapi/joi");
+//const uuid = require('uuid');
 
 const POIS = {
   home: {
@@ -24,6 +26,7 @@ const POIS = {
         const user = await User.findById(id);
         const data = request.payload;
         const newPoi = new POI({
+          //id: uuid.v1(),
           name: data.name,
           county: data.county,
           long: data.long,
@@ -36,8 +39,56 @@ const POIS = {
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
+
     }
-  }
+  },
+  deletepoi: {
+    handler: async function (request, h) {
+      try {
+        const poi = POI.findById(request.params._id);
+        console.log("Removing pointofinterest: " + poi);
+        await poi.deleteOne();
+        return h.redirect("/report");
+      } catch
+        (err) {
+        return h.view('home', {errors: [{message: err.message}]});
+      }
+    },
+  },
+  showUpdatePOI: {
+    handler: async function(request, h) {
+      try {
+        const id = request.params._id;
+        const poi = await POI.findById(id).lean();
+        return h.view("update-poi", { title: "Edit Poi", poi: poi });
+      } catch (err) {
+        return h.view("login", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+  updatePOI: {
+
+    handler: async function (request, h)
+    {
+      console.log("yes you got to UpdatePOI");
+      try
+      {
+        const poiEdit = request.payload;
+        const poi = await POI.findById(request.params._id);
+        console.log(poi);
+        poi.name = poiEdit.name;
+        poi.county = poiEdit.county;
+        poi.lat = poiEdit.lat;
+        poi.long = poiEdit.long;
+        poi.cat = poiEdit.cat;
+        await poi.save();
+        return h.redirect('/report');
+      } catch (err)
+      {
+        return h.view('home', {errors: [{message: err.message}]});
+      }
+    },
+  },
 };
 
 module.exports = POIS;

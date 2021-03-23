@@ -1,7 +1,7 @@
-<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+<div class="uk-margin uk-width-3xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
   <table class="uk-table">
     <caption>
-      POIs to Date
+      Points of Interest from your fellow explorers
     </caption>
     <thead>
       <th>Name</th>
@@ -10,16 +10,36 @@
       <th>Longitude</th>
       <th>Category</th>
       <th>Adder</th>
+      <th>Gallery</th>
+      <th>Delete</th>
+      <th>Edit</th>
     </thead>
     <tbody class="uk-text-left">
       {{#each pois}}
         <tr>
-          <td>{{name}}</td>
+          <td class="uk-text-nowrap">{{name}}</td>
           <td>{{county}}</td>
           <td>{{lat}}</td>
           <td>{{long}}</td>
           <td>{{cat}}</td>
-          <td> {{adder.firstName}} {{adder.lastName}} </td>
+          <td class="uk-text-nowrap">{{adder.firstName}} {{adder.lastName}} </td>
+          <td>
+          <a href="/gallery/{{_id}}" style="padding-left: 0.5em;" class="uk-card uk-card-small uk-card-hover" >
+            <i class="fas far fa-images fa-2x" style="color:rgb(0,155,119);"  pos="top" title="open gallery" uk-tooltip></i>
+          </a>
+          </td>
+          <td>
+            <a href="/delete-poi/{{_id}}"  style="padding-left: 0.5em;" class="uk-card uk-card-small uk-card-hover " >
+             <i class=" fas far fa-trash-alt fa-2x uk-position-relative uk-position-right " style="color:rgb(0,155,119);" title="Delete Point Of Interest" uk-tooltip>
+             </i>
+            </a>
+          </td>
+          <td >
+            <a href='/update-poi/{{_id}}' style="padding-left: 0.5em;" class="uk-card uk-card-small uk-card-hover">
+              <i  class=" fas far fa-user-edit fa-2x " style="color:rgb(0,155,119);" title="Edit POI" uk-tooltip>
+              </i>
+            </a>
+          </td>
         </tr>
       {{/each}}
     </tbody>
