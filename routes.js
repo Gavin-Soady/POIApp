@@ -4,6 +4,7 @@ const Accounts = require("./app/controllers/accounts");
 const POI = require("./app/controllers/pois");
 const Gallery = require('./app/controllers/gallery');
 const Categories =require("./app/controllers/categories")
+const Admin = require("./app/controllers/admin")
 
 module.exports = [
   { method: "GET", path: "/", config: Accounts.index },
@@ -25,11 +26,20 @@ module.exports = [
   { method: 'GET', path: '/deleteimage/{public_id}/{_id}', config: Gallery.deleteImage },
   { method: 'GET', path: '/upload', config: Gallery.upload },
 
-  {method: "GET", path: "/delete-poi/{_id}", config: POI.deletepoi },
-  {method: 'GET', path: '/update-poi/{_id}', config: POI.showUpdatePOI},
-  {method: 'POST', path: "/update-poi/{_id}", config: POI.updatePOI},
+  { method: "GET", path: "/delete-poi/{_id}", config: POI.deletepoi },
+  { method: 'GET', path: '/update-poi/{_id}', config: POI.showUpdatePOI},
+  { method: 'POST', path: "/update-poi/{_id}", config: POI.updatePOI},
 
-  {method: 'POST', path: '/new-category', config: Categories.addCategory},
+  { method: 'POST', path: '/new-category', config: Categories.addCategory},
+
+  { method: "GET", path: "/adminDashboard", config: Admin.index },
+  { method: "GET", path: "/admin-delete-user/{_id}",config: Admin.deleteUser },
+  { method: 'GET', path: '/admin-update-user/{_id}', config: Admin.showUpdateUser },
+  { method: 'POST', path: '/admin-update-user/{_id}', config: Admin.updateUser },
+  { method: 'GET', path: '/admin-update-poi/{_id}', config: Admin.adminShowUpdatePOI},
+  { method: 'POST', path: "/admin-update-poi/{_id}", config: Admin.adminUpdatePOI},
+  { method: "GET", path: "/admin-delete-poi/{_id}", config: Admin.adminDeletePOI },
+
 
   {
     method: "GET",

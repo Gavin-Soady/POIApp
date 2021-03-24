@@ -1,19 +1,18 @@
-
 <div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-
-  <form class="uk-form-stacked uk-text-left" action="/addpoi" method="POST">
+  <form class="uk-form-stacked uk-text-left" action="/admin-update-poi/{{poi._id}}" method="POST">
     <div class="uk-grid uk-grid-stack">
       <div class="uk-width-1-2@m">
         <div class="uk-margin">
           <label class="uk-form-label" for="form-stacked-text">Enter Name of Place</label>
           <div class="uk-form-controls">
-            <input class="uk-input" id="form-stacked-text" type="string" name="name" placeholder="Name of place.." />
+            <input class="uk-input" id="form-stacked-text" type="string" name="name" value="{{poi.name}}"/>
           </div>
         </div>
         <div class="uk-margin">
           <label class="uk-form-label" for="form-stacked-text">Enter Name of County</label>
           <div class="uk-form-controls">
             <select class="uk-select" id="form-horizontal-select" name="county">
+              <option value={{poi.county}}>{{poi.county}}</option>
               <option value="Antrim">Antrim</option>
               <option value="Armagh">Armagh</option>
               <option value="Carlow">Carlow</option>
@@ -52,23 +51,20 @@
       <div class="uk-margin">
         <label class="uk-form-label" for="form-stacked-text">Longitude</label>
         <div class="uk-form-controls">
-          <input class="uk-input" id="form-stacked-text" type="string" name="long" placeholder="Longitude.." />
+          <input class="uk-input" id="form-stacked-text" type="string" name="long" value="{{poi.long}}" />
         </div>
       </div>
       <div class="uk-margin">
         <label class="uk-form-label" for="form-stacked-text">Latitude</label>
         <div class="uk-form-controls">
-          <input class="uk-input" id="form-stacked-text" type="string" name="lat" placeholder="Latitude.." />
+          <input class="uk-input" id="form-stacked-text" type="string" name="lat" value="{{poi.lat}}" />
         </div>
       </div>
       <div class="uk-margin">
         <label class="uk-form-label" for="form-stacked-text">Category</label>
             <div class="uk-form-controls">
               <select class="uk-select" id="form-horizontal-select" name="cat">
-                <option value="na">Please choose one from the list below..</option>
-                {{#each categories}}
-                  <option value="{{name}}">{{name}}</option>
-                {{/each}}
+                <option value="{{poi.cat}}">{{poi.cat}}</option>
                 <option value="Landscape-feature">Landscape Feature</option>
                 <option value="National-monument">National monument</option>
                 <option value="Walk">Walk</option>
@@ -86,10 +82,9 @@
       </div>
       <div class=" uk-width-2-2@m">
         <div class=" uk-position-large uk-position-center-right" style="margin-right: 4em">
-          <button  class="  submit uk-button uk-button-primary uk-button-large uk-width-1-1" style="background-color:rgb(0,155,119)">Add Place of Interest</button>
+          <button  class="  submit uk-button uk-button-primary uk-button-large uk-width-1-1" style="background-color:rgb(0,155,119)">Update Place of Interest</button>
         </div>
       </div>
     </div>
   </form>
-  {{> new-category}}
 </div>
