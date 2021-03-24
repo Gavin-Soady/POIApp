@@ -3,6 +3,7 @@ const POI = require("../models/poi");
 const User = require("../models/user");
 const Joi = require("@hapi/joi");
 const Category = require('../models/category');
+const CurrentWeather = require('../utils/getCurrentWeather');
 //const uuid = require('uuid');
 
 const POIS = {
@@ -14,7 +15,8 @@ const POIS = {
   },
   report: {
     handler: async function(request, h) {
-      const pois = await POI.find().populate("adder").lean();
+      let pois = await POI.find().populate("adder").lean();
+      pois = await CurrentWeather.addPoiWeather(pois);
       return h.view("report", {
         title: "Places Added",
         pois: pois
