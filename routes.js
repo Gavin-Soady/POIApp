@@ -14,6 +14,7 @@ module.exports = [
   { method: "POST", path: "/login", config: Accounts.login },
   { method: 'GET', path: '/settings', config: Accounts.showSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
+  { method: "GET", path: "/delete-account/{_id}", config: Accounts.deleteaccount },
 
   { method: "GET", path: "/home", config: POI.home },
   { method: "POST", path: "/addpoi", config: POI.add },
