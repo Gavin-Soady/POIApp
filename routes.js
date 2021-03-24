@@ -21,7 +21,7 @@ module.exports = [
 
   { method: 'GET', path: '/gallery/{_id}', config: Gallery.index },
   { method: 'POST', path: '/uploadfile/{_id}', config: Gallery.uploadFile },
-  { method: 'GET', path: '/deleteimage/{public_id}', config: Gallery.deleteImage },
+  { method: 'GET', path: '/deleteimage/{public_id}/{_id}', config: Gallery.deleteImage },
   { method: 'GET', path: '/upload', config: Gallery.upload },
 
   {method: "GET", path: "/delete-poi/{_id}", config: POI.deletepoi },

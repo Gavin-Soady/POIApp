@@ -36,8 +36,9 @@ const ImageStore = {
     await cloudinary.v2.uploader.upload('./public/temp.img', { folder: folder });
   },
 
-  deleteImage: async function(id) {
-    await cloudinary.v2.uploader.destroy(id, { });
+  deleteImage: async function(image) {
+    let id = image.toString();
+    await cloudinary.v2.uploader.destroy(id, {});
   },
 
 };
